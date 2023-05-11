@@ -35,7 +35,7 @@ def sort_files():
     for item in dir_path.glob('**/*'):
         
         if item.is_file() and item.suffix.lower() in folders_and_types['images']:
-            destination = 'C:\\Users\\Hello\\Desktop\\Learn\\trash\\images'f'\{item.name}'
+            destination = os.path.join(dir_path, 'images', item.name)
             if item == Path(destination):
                 continue
             try:
@@ -44,7 +44,7 @@ def sort_files():
                 continue
 
         if item.is_file() and item.suffix.lower() in folders_and_types['videos']:
-            destination = 'C:\\Users\\Hello\\Desktop\\Learn\\trash\\videos'f'\{item.name}'
+            destination = os.path.join(dir_path, 'videos', item.name )
             if item == Path(destination):
                 continue
             try:
@@ -53,7 +53,7 @@ def sort_files():
                 continue
 
         if item.is_file() and item.suffix.lower() in folders_and_types['documents']:
-            destination = 'C:\\Users\\Hello\\Desktop\\Learn\\trash\\documents'f'\{item.name}'
+            destination = os.path.join(dir_path, 'documents', item.name )
             if item == Path(destination):
                 continue
             try:
@@ -62,7 +62,7 @@ def sort_files():
                 continue
             
         if item.is_file() and item.suffix.lower() in folders_and_types['audio']:
-            destination = 'C:\\Users\\Hello\\Desktop\\Learn\\trash\\audio'f'\{item.name}'
+            destination = os.path.join(dir_path, 'audio', item.name )
             if item == Path(destination):
                 continue
             try:
@@ -71,13 +71,14 @@ def sort_files():
                 continue
 
         if item.is_file() and item.suffix.lower() in folders_and_types['archives']:
-            destination = 'C:\\Users\\Hello\\Desktop\\Learn\\trash\\archives'f'\{item.stem}'
+            destination = os.path.join(dir_path, 'archives', item.stem)
             if item == Path(destination):
                 continue
             shutil.unpack_archive(item, destination)
+           
             
         else:
-            continue
+             continue
 
     for item in dir_path.glob('**/*'):
         if item.is_dir() and not len(os.listdir(item)):
