@@ -83,9 +83,3 @@ def clean_folders():
             os.rmdir(item)
 
     print ('Everything is done!')
-
-def main():
-    clean_folders()
-
-if __name__ == '__main__':
-    main()   
